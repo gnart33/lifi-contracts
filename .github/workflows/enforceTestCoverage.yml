@@ -26,7 +26,7 @@ jobs:
       ETH_NODE_URI_GNOSIS: ${{ secrets.ETH_NODE_URI_GNOSIS }}
       MIN_TEST_COVERAGE: ${{ secrets.MIN_TEST_COVERAGE }}
     steps:
-      - uses: actions/checkout@v4.1.7
+      - uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v4.1.0

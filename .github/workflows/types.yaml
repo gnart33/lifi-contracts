@@ -15,7 +15,7 @@ jobs:
     steps:
       # Step 1: Checkout the contracts repository
       - name: Checkout Contracts Repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
         with:
           ref: ${{ env.BRANCH_NAME }}
 
@@ -47,7 +47,7 @@ jobs:
 
       # Step 8: Checkout the lifi-contract-types repository
       - name: Checkout lifi-contract-types Repository
-        uses: actions/checkout@v4.1.7
+        uses: actions/checkout@v4
         with:
           repository: lifinance/lifi-contract-types
           path: lifi-contract-types

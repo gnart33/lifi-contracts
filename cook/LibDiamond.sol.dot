@@ -1,0 +1,144 @@
+digraph G {
+  graph [ ratio = "auto", page = "100", compound =true ];
+subgraph "clusterLibDiamond" {
+  graph [ label = "LibDiamond  (lib)", color = "lightgray", style = "filled", bgcolor = "lightgray" ];
+  "LibDiamond.diamondStorage" [ label = "diamondStorage" ];
+  "LibDiamond.setContractOwner" [ label = "setContractOwner", color = "white" ];
+  "LibDiamond.contractOwner" [ label = "contractOwner", color = "white" ];
+  "LibDiamond.enforceIsContractOwner" [ label = "enforceIsContractOwner", color = "white" ];
+  "LibDiamond.diamondCut" [ label = "diamondCut", color = "white" ];
+  "LibDiamond.addFunctions" [ label = "addFunctions" ];
+  "LibDiamond.replaceFunctions" [ label = "replaceFunctions" ];
+  "LibDiamond.removeFunctions" [ label = "removeFunctions" ];
+  "LibDiamond.addFacet" [ label = "addFacet" ];
+  "LibDiamond.addFunction" [ label = "addFunction" ];
+  "LibDiamond.removeFunction" [ label = "removeFunction" ];
+  "LibDiamond.initializeDiamondCut" [ label = "initializeDiamondCut" ];
+  "LibDiamond.enforceHasContractCode" [ label = "enforceHasContractCode" ];
+  "LibDiamond.OnlyContractOwner" [ label = "OnlyContractOwner" ];
+  "LibDiamond.IncorrectFacetCutAction" [ color = "brown2", shape =box ];
+  "LibDiamond.NoSelectorsInFace" [ color = "brown2", shape =box ];
+  "LibDiamond.FacetAddressIsZero" [ color = "brown2", shape =box ];
+  "LibDiamond.FunctionAlreadyExists" [ color = "brown2", shape =box ];
+  "LibDiamond.FacetAddressIsNotZero" [ color = "brown2", shape =box ];
+  "LibDiamond.FunctionDoesNotExist" [ color = "brown2", shape =box ];
+  "LibDiamond.address" [ label = "address" ];
+  "LibDiamond.FunctionIsImmutable" [ color = "brown2", shape =box ];
+  "LibDiamond.InitZeroButCalldataNotEmpty" [ color = "brown2", shape =box ];
+  "LibDiamond.CalldataEmptyButInitNotZero" [ color = "brown2", shape =box ];
+  "LibDiamond.InitReverted" [ color = "brown2", shape =box ];
+  "LibDiamond.FacetContainsNoCode" [ color = "brown2", shape =box ];
+}
+
+subgraph "clusterLibUtil" {
+  graph [ label = "LibUtil", color = "lightgray" ];
+  "LibUtil.isZeroAddress" [ label = "isZeroAddress" ];
+}
+
+subgraph "cluster_init" {
+  graph [ label = "_init", color = "lightgray" ];
+  "_init.delegatecall" [ label = "delegatecall" ];
+}
+
+  "LibDiamond.setContractOwner";
+  "LibDiamond.diamondStorage";
+  "LibDiamond.contractOwner";
+  "LibDiamond.enforceIsContractOwner";
+  "LibDiamond.OnlyContractOwner";
+  "LibDiamond.diamondCut";
+  "LibDiamond.addFunctions";
+  "LibDiamond.replaceFunctions";
+  "LibDiamond.removeFunctions";
+  "LibDiamond.IncorrectFacetCutAction";
+  "LibDiamond.initializeDiamondCut";
+  "LibDiamond.NoSelectorsInFace";
+  "LibUtil.isZeroAddress";
+  "LibDiamond.FacetAddressIsZero";
+  "LibDiamond.addFacet";
+  "LibDiamond.FunctionAlreadyExists";
+  "LibDiamond.addFunction";
+  "LibDiamond.removeFunction";
+  "LibDiamond.FacetAddressIsNotZero";
+  "LibDiamond.enforceHasContractCode";
+  "LibDiamond.FunctionDoesNotExist";
+  "LibDiamond.address";
+  "LibDiamond.FunctionIsImmutable";
+  "LibDiamond.InitZeroButCalldataNotEmpty";
+  "LibDiamond.CalldataEmptyButInitNotZero";
+  "_init.delegatecall";
+  "LibDiamond.InitReverted";
+  "LibDiamond.FacetContainsNoCode";
+  "LibDiamond.setContractOwner" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.contractOwner" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.enforceIsContractOwner" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.enforceIsContractOwner" -> "LibDiamond.OnlyContractOwner" [ color = "green" ];
+  "LibDiamond.diamondCut" -> "LibDiamond.addFunctions" [ color = "green" ];
+  "LibDiamond.diamondCut" -> "LibDiamond.replaceFunctions" [ color = "green" ];
+  "LibDiamond.diamondCut" -> "LibDiamond.removeFunctions" [ color = "green" ];
+  "LibDiamond.diamondCut" -> "LibDiamond.IncorrectFacetCutAction" [ color = "red" ];
+  "LibDiamond.diamondCut" -> "LibDiamond.initializeDiamondCut" [ color = "green" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.NoSelectorsInFace" [ color = "red" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.addFunctions" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.FacetAddressIsZero" [ color = "red" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.addFacet" [ color = "green" ];
+  "LibDiamond.addFunctions" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.FunctionAlreadyExists" [ color = "red" ];
+  "LibDiamond.addFunctions" -> "LibDiamond.addFunction" [ color = "green" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.NoSelectorsInFace" [ color = "red" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.replaceFunctions" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.FacetAddressIsZero" [ color = "red" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.addFacet" [ color = "green" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.FunctionAlreadyExists" [ color = "red" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.removeFunction" [ color = "green" ];
+  "LibDiamond.replaceFunctions" -> "LibDiamond.addFunction" [ color = "green" ];
+  "LibDiamond.removeFunctions" -> "LibDiamond.NoSelectorsInFace" [ color = "red" ];
+  "LibDiamond.removeFunctions" -> "LibDiamond.diamondStorage" [ color = "green" ];
+  "LibDiamond.removeFunctions" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.removeFunctions" -> "LibDiamond.FacetAddressIsNotZero" [ color = "red" ];
+  "LibDiamond.removeFunctions" -> "LibDiamond.removeFunction" [ color = "green" ];
+  "LibDiamond.addFacet" -> "LibDiamond.enforceHasContractCode" [ color = "green" ];
+  "LibDiamond.removeFunction" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.removeFunction" -> "LibDiamond.FunctionDoesNotExist" [ color = "red" ];
+  "LibDiamond.removeFunction" -> "LibDiamond.address" [ color = "green" ];
+  "LibDiamond.removeFunction" -> "LibDiamond.FunctionIsImmutable" [ color = "red" ];
+  "LibDiamond.initializeDiamondCut" -> "LibUtil.isZeroAddress" [ color = "orange" ];
+  "LibDiamond.initializeDiamondCut" -> "LibDiamond.InitZeroButCalldataNotEmpty" [ color = "red" ];
+  "LibDiamond.initializeDiamondCut" -> "LibDiamond.CalldataEmptyButInitNotZero" [ color = "red" ];
+  "LibDiamond.initializeDiamondCut" -> "LibDiamond.address" [ color = "green" ];
+  "LibDiamond.initializeDiamondCut" -> "LibDiamond.enforceHasContractCode" [ color = "green" ];
+  "LibDiamond.initializeDiamondCut" -> "_init.delegatecall" [ color = "orange" ];
+  "LibDiamond.initializeDiamondCut" -> "LibDiamond.InitReverted" [ color = "red" ];
+  "LibDiamond.enforceHasContractCode" -> "LibDiamond.FacetContainsNoCode" [ color = "red" ];
+
+
+rankdir=LR
+node [shape=plaintext]
+subgraph cluster_01 { 
+label = "Legend";
+key [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td align="right" port="i1">Internal Call</td></tr>
+  <tr><td align="right" port="i2">External Call</td></tr>
+  <tr><td align="right" port="i2">Custom Error Call</td></tr>
+  <tr><td align="right" port="i3">Defined Contract</td></tr>
+  <tr><td align="right" port="i4">Undefined Contract</td></tr>
+  </table>>]
+key2 [label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+  <tr><td port="i1">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i2">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i3" bgcolor="lightgray">&nbsp;&nbsp;&nbsp;</td></tr>
+  <tr><td port="i4">
+    <table border="1" cellborder="0" cellspacing="0" cellpadding="7" color="lightgray">
+      <tr>
+       <td></td>
+      </tr>
+     </table>
+  </td></tr>
+  </table>>]
+key:i1:e -> key2:i1:w [color="green"]
+key:i2:e -> key2:i2:w [color="orange"]
+key:i2:e -> key2:i2:w [color="red"]
+}
+}
+

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.17;
 
 // import { IDiamondCut } from "../Interfaces/LibDiamond.sol";
-import { LibDiamond } from "../Libraries/LibDiamond.sol";
+// import { LibDiamond } from "../Libraries/LibDiamond.sol";
 import { LibUtil } from "../Libraries/LibUtil.sol";
 import { OnlyContractOwner } from "../Errors/GenericErrors.sol";
 
@@ -290,8 +290,8 @@ library LibDiamond {
                 .facetFunctionSelectors[_facetAddress]
                 .functionSelectors[lastSelectorPosition];
             ds.facetFunctionSelectors[_facetAddress].functionSelectors[
-                selectorPosition
-            ] = lastSelector;
+                    selectorPosition
+                ] = lastSelector;
             ds
                 .selectorToFacetAndPosition[lastSelector]
                 .functionSelectorPosition = uint96(selectorPosition);

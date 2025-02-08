@@ -33,7 +33,7 @@ contract AccessManagerFacetTest is TestBase {
         restricted = RestrictedContract(address(diamond));
 
         // set facet address in TestBase
-        setFacetAddressInTestBase(address(accessMgr), "AccessManagerFacet");
+        // setFacetAddressInTestBase(address(accessMgr), "AccessManagerFacet");
     }
 
     function testAccessIsRestricted() public {

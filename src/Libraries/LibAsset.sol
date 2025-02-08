@@ -3,7 +3,8 @@ pragma solidity ^0.8.17;
 import { InsufficientBalance, NullAddrIsNotAnERC20Token, NullAddrIsNotAValidSpender, NoTransferToNullAddress, InvalidAmount, NativeAssetTransferFailed } from "../Errors/GenericErrors.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import { LibSwap } from "./LibSwap.sol";
+
+// import { LibSwap } from "./LibSwap.sol";
 
 /// @title LibAsset
 /// @custom:version 1.0.2
@@ -132,17 +133,17 @@ library LibAsset {
         }
     }
 
-    function depositAssets(LibSwap.SwapData[] calldata swaps) internal {
-        for (uint256 i = 0; i < swaps.length; ) {
-            LibSwap.SwapData calldata swap = swaps[i];
-            if (swap.requiresDeposit) {
-                depositAsset(swap.sendingAssetId, swap.fromAmount);
-            }
-            unchecked {
-                i++;
-            }
-        }
-    }
+    // function depositAssets(LibSwap.SwapData[] calldata swaps) internal {
+    //     for (uint256 i = 0; i < swaps.length; ) {
+    //         LibSwap.SwapData calldata swap = swaps[i];
+    //         if (swap.requiresDeposit) {
+    //             depositAsset(swap.sendingAssetId, swap.fromAmount);
+    //         }
+    //         unchecked {
+    //             i++;
+    //         }
+    //     }
+    // }
 
     /// @notice Determines whether the given assetId is the native asset
     /// @param assetId The asset identifier to evaluate

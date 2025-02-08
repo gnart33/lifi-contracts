@@ -1,34 +1,21 @@
 digraph G {
   graph [ ratio = "auto", page = "100", compound =true ];
-subgraph "clusterLiFiDiamond" {
-  graph [ label = "LiFiDiamond", color = "lightgray", style = "filled", bgcolor = "lightgray" ];
-  "LiFiDiamond.<Constructor>" [ label = "<Constructor>", color = "green" ];
-  "LiFiDiamond.<Fallback>" [ label = "<Fallback>", color = "blue" ];
-  "LiFiDiamond.<Receive Ether>" [ label = "<Receive Ether>", color = "blue" ];
-  "LiFiDiamond.address" [ label = "address" ];
+subgraph "clusterDiamondCutFacet" {
+  graph [ label = "DiamondCutFacet", color = "lightgray", style = "filled", bgcolor = "lightgray" ];
+  "DiamondCutFacet.diamondCut" [ label = "diamondCut", color = "blue" ];
 }
 
 subgraph "clusterLibDiamond" {
   graph [ label = "LibDiamond", color = "lightgray" ];
-  "LibDiamond.setContractOwner" [ label = "setContractOwner" ];
-  "LibDiamond.FacetCut" [ label = "FacetCut" ];
+  "LibDiamond.enforceIsContractOwner" [ label = "enforceIsContractOwner" ];
   "LibDiamond.diamondCut" [ label = "diamondCut" ];
-  "LibDiamond.FunctionDoesNotExist" [ label = "FunctionDoesNotExist" ];
 }
 
-  "LiFiDiamond.<Constructor>";
-  "LibDiamond.setContractOwner";
-  "LibDiamond.FacetCut";
+  "DiamondCutFacet.diamondCut";
+  "LibDiamond.enforceIsContractOwner";
   "LibDiamond.diamondCut";
-  "LiFiDiamond.address";
-  "LiFiDiamond.<Fallback>";
-  "LibDiamond.FunctionDoesNotExist";
-  "LiFiDiamond.<Constructor>" -> "LibDiamond.setContractOwner" [ color = "orange" ];
-  "LiFiDiamond.<Constructor>" -> "LibDiamond.FacetCut" [ color = "orange" ];
-  "LiFiDiamond.<Constructor>" -> "LibDiamond.diamondCut" [ color = "orange" ];
-  "LiFiDiamond.<Constructor>" -> "LiFiDiamond.address" [ color = "green" ];
-  "LiFiDiamond.<Fallback>" -> "LiFiDiamond.address" [ color = "green" ];
-  "LiFiDiamond.<Fallback>" -> "LibDiamond.FunctionDoesNotExist" [ color = "orange" ];
+  "DiamondCutFacet.diamondCut" -> "LibDiamond.enforceIsContractOwner" [ color = "orange" ];
+  "DiamondCutFacet.diamondCut" -> "LibDiamond.diamondCut" [ color = "orange" ];
 
 
 rankdir=LR
